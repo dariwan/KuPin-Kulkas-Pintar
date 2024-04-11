@@ -1,4 +1,4 @@
-package com.dariwan.kupin.view
+package com.dariwan.kupin.view.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
