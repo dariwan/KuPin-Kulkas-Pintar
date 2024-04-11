@@ -6,6 +6,7 @@
     </style>
 
     <style name="Theme.KuPin" parent="Base.Theme.KuPin" />
+    <style name="Widget.Material3.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox"/>
 
     <style name="ProgressBarStyle">
         <item name="colorAccent">@color/blue_1</item>
