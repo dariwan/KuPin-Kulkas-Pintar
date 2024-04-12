@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">kuPin</string>
-    <string name="refrigerator">Refrigerator</string>
-    <string name="recipe">Recipe</string>
-    <string name="recomendation">Recomendation</string>
-    <string name="profile">Profile</string>
+    <string name="kulkasku">Kulkasku</string>
+    <string name="resep">Resep</string>
+    <string name="rekomendasi">Rekomendasi</string>
+    <string name="Profil">Profil</string>
     <string name="version_0_0_1">Version 0.0.1</string>
     <string name="kulkas_pintar">Kulkas Pintar</string>
     <!-- TODO: Remove or change this placeholder text -->

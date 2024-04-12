@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/fragmentRefrigerator">
+
+    <fragment
+        android:id="@+id/fragmentRefrigerator"
+        android:name="com.dariwan.kupin.view.refrigenerator.RefrigeneratorFragment"
+        android:label="fragment_refrigenerator"
+        tools:layout="@layout/fragment_refrigenerator" />
+    <fragment
+        android:id="@+id/fragmentRecipe"
+        android:name="com.dariwan.kupin.view.recipe.RecipeFragment"
+        android:label="fragment_recipe"
+        tools:layout="@layout/fragment_recipe" />
+    <fragment
+        android:id="@+id/fragmentRecomm"
+        android:name="com.dariwan.kupin.view.recomendation.RecomendationFragment"
+        android:label="fragment_recomendation"
+        tools:layout="@layout/fragment_recomendation" />
+    <fragment
+        android:id="@+id/fragmentUser"
+        android:name="com.dariwan.kupin.view.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/fragmentRefrigerator"
-        android:title="@string/refrigerator"
+        android:title="@string/kulkasku"
         android:icon="@drawable/ic_refrigerator"/>
 
     <item android:id="@+id/fragmentRecipe"
-        android:title="@string/recipe"
+        android:title="@string/resep"
         android:icon="@drawable/ic_recipe"/>
 
     <item android:id="@+id/fragmentRecomm"
-        android:title="@string/recomendation"
+        android:title="@string/rekomendasi"
         android:icon="@drawable/ic_recom"/>
 
     <item android:id="@+id/fragmentUser"
-        android:title="@string/profile"
+        android:title="@string/Profil"
         android:icon="@drawable/ic_user"/>
 </menu>

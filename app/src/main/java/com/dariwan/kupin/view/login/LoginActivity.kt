@@ -1,9 +1,11 @@
 package com.dariwan.kupin.view.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.dariwan.kupin.R
 import com.dariwan.kupin.databinding.ActivityLoginBinding
+import com.dariwan.kupin.view.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -11,5 +13,15 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setupButton()
+    }
+
+    private fun setupButton() {
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
