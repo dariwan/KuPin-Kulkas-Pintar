@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.dariwan.kupin.R
 import com.dariwan.kupin.databinding.ActivityRegisterBinding
 import com.dariwan.kupin.view.login.LoginActivity
 
@@ -18,7 +17,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+        registerViewModel = ViewModelProvider(this)[RegisterViewModel::class.java]
 
         setupButton()
     }
@@ -37,6 +36,7 @@ class RegisterActivity : AppCompatActivity() {
         val username = binding.etUsername.text.toString()
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
+        
 
         binding.progressBar.visibility = View.VISIBLE
 
@@ -49,5 +49,9 @@ class RegisterActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
             Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
         })
+    }
+
+    private fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }
