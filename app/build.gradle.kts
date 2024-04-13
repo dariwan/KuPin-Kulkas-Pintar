@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-parcelize")
+    id("kotlin-kapt")
     id("com.google.gms.google-services")
 }
 
@@ -67,6 +68,11 @@ dependencies {
 
     //glide
     implementation ("com.github.bumptech.glide:glide:4.14.2")
+
+    //Room
+    kapt("androidx.room:room-compiler:2.5.1")
+    implementation("androidx.room:room-runtime:2.5.1")
+    implementation("androidx.room:room-ktx:2.5.1")
 
     //firebase
     implementation("com.google.firebase:firebase-auth:22.3.1")
