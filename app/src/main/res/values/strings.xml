@@ -15,4 +15,17 @@
     <string name="username">Username</string>
     <string name="daftar">Daftar</string>
     <string name="sudah_punya_akun_masuk">Sudah punya akun? Masuk</string>
+    <string name="material_name">Material Name</string>
+    <string name="_10_10_10">10-10-10</string>
+    <string name="_100">100</string>
+    <string name="tambah_bahan">Tambah Bahan</string>
+    <string name="nama_bahan">Nama Bahan</string>
+    <string name="jumlah_bahan">Jumlah Bahan</string>
+    <string name="tanggal_batas_konsumsi">Tanggal Batas Konsumsi</string>
+    <string name="detail_bahan">Detail Bahan</string>
+    <string name="waktu_batas_konsumsi">Waktu Batas Konsumsi</string>
+    <string name="_10_hari">10 Hari</string>
+    <string name="edit">Edit</string>
+    <string name="hapus">Hapus</string>
+    <string name="edit_bahan">Edit Bahan</string>
 </resources>
