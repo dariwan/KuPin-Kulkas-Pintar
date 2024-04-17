@@ -9,6 +9,10 @@
         android:title="@string/resep"
         android:icon="@drawable/ic_recipe"/>
 
+    <item android:id="@+id/fragmentBlank"
+        android:title=""
+        android:enabled="false"/>
+
     <item android:id="@+id/fragmentRecomm"
         android:title="@string/rekomendasi"
         android:icon="@drawable/ic_recom"/>
