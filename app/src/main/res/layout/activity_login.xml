@@ -75,6 +75,7 @@
             android:drawablePadding="10dp"
             android:fontFamily="@font/poppins_regular"
             android:hint="@string/password"
+            android:inputType="textPassword"
             tools:ignore="VisualLintTextFieldSize" />
 
     </com.google.android.material.textfield.TextInputLayout>
