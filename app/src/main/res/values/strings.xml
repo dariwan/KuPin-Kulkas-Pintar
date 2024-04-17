@@ -28,4 +28,7 @@
     <string name="edit">Edit</string>
     <string name="hapus">Hapus</string>
     <string name="edit_bahan">Edit Bahan</string>
+    <string name="nama">Nama</string>
+    <string name="username_gmail_com">username@gmail.com</string>
+    <string name="dark_mode">Dark Mode</string>
 </resources>
