@@ -1,5 +1,6 @@
 package com.dariwan.kupin.view.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.dariwan.kupin.R
 import com.dariwan.kupin.databinding.ActivityMainBinding
+import com.dariwan.kupin.view.refrigenerator.addmaterial.AddMaterialActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +21,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupBottomNav()
+        setupFab()
+    }
+
+    private fun setupFab() {
+        binding.fab.setOnClickListener {
+            val intent = Intent(this, AddMaterialActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupBottomNav() {

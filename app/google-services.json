@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "172381804174",
+    "project_id": "kupin-13e69",
+    "storage_bucket": "kupin-13e69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172381804174:android:f2c06168041b1b37ccdbdf",
+        "android_client_info": {
+          "package_name": "com.dariwan.kupin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVDivKraAPCGysGi40ptTxA9TsQoILzVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
