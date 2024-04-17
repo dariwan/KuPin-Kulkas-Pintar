@@ -24,7 +24,7 @@
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:fabCradleMargin="11dp"
+        app:fabCradleMargin="7dp"
         app:fabCradleVerticalOffset="10dp"
         android:layout_gravity="bottom">
 
@@ -34,6 +34,7 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
             android:alpha="0.5"
+
             app:itemIconTint="@color/blue_1"
             app:itemTextColor="@color/blue_1"
             app:menu="@menu/bottom_nav_menu"/>
