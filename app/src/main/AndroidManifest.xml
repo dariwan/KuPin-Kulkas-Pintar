@@ -13,16 +13,19 @@
         android:theme="@style/Theme.KuPin"
         tools:targetApi="31">
         <activity
+            android:name=".view.refrigenerator.addmaterial.AddMaterialActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.register.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".view.main.MainActivity"
+            android:name=".view.splashscreen.SplashScreenActivity"
             android:exported="false" />
         <activity
-            android:name=".view.splashscreen.SplashScreenActivity"
+            android:name=".view.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
