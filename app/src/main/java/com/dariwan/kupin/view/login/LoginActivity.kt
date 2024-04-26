@@ -2,15 +2,19 @@ package com.dariwan.kupin.view.login
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.R
 import com.dariwan.kupin.databinding.ActivityLoginBinding
 import com.dariwan.kupin.view.main.MainActivity
 import com.dariwan.kupin.view.register.RegisterActivity
+
+@RequiresApi(Build.VERSION_CODES.O)
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -40,19 +44,26 @@ class LoginActivity : AppCompatActivity() {
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
 
-        binding.progressBar.visibility = View.VISIBLE
 
-        loginViewModel.loginUser(email, password, { user ->
-            binding.progressBar.visibility = View.GONE
-            Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-            saveLoginInfo()
-        }, {errorMessage ->
-            binding.progressBar.visibility = View.GONE
-            Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-        })
+        if (email.isEmpty()){
+            binding.etEmailLayout.error = "Email harus di isi"
+        } else if (password.isEmpty()){
+            binding.etPasswordLayout.error = "Password harus di isi"
+        } else {
+            binding.progressBar.visibility = View.VISIBLE
+            loginViewModel.loginUser(email, password, { user ->
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+                saveLoginInfo()
+            }, {errorMessage ->
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+            })
+        }
+
     }
 
     private fun saveLoginInfo() {

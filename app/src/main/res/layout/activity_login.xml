@@ -46,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/email"
+            android:inputType="textEmailAddress"
             android:drawablePadding="10dp"
             android:drawableStart="@drawable/ic_email"
             android:fontFamily="@font/poppins_regular"
@@ -62,6 +63,7 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="8dp"
         app:errorEnabled="true"
+        app:passwordToggleEnabled="true"
         app:hintEnabled="false"
         app:layout_constraintTop_toBottomOf="@+id/et_email_layout"
         tools:layout_editor_absoluteX="24dp">
