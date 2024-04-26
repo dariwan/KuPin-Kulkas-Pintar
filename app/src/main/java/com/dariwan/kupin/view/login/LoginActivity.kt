@@ -1,5 +1,6 @@
 package com.dariwan.kupin.view.login
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -46,14 +47,35 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            saveloginInfo()
+            finish()
+            saveLoginInfo()
         }, {errorMessage ->
             binding.progressBar.visibility = View.GONE
             Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
         })
     }
 
-    private fun saveloginInfo() {
+    private fun saveLoginInfo() {
+        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply {
+            putBoolean(IS_LOGIN, true)
+        }.apply()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val isLogin = sharedPreferences.getBoolean(IS_LOGIN, false)
+        if (isLogin){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    companion object {
+        const val PREFS_NAME = "kupin_app"
+        const val IS_LOGIN = "login"
     }
 }

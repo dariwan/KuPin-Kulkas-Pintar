@@ -78,4 +78,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation("com.google.firebase:firebase-firestore:24.11.1")
 
+    //worker
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
 }
