@@ -66,7 +66,7 @@ class RefrigeneratorFragment : Fragment() {
             db.collection("user").document(userId).get()
                 .addOnSuccessListener { document ->
                     val username = document.getString("username")
-                    binding.tvUsername.text = username
+                    binding.tvUsername.text = "Hi $username"
                 }
         }
     }

@@ -1,5 +1,6 @@
 package com.dariwan.kupin.view.login
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.R
@@ -22,6 +24,17 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var sharedPref: SessionManager
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                Toast.makeText(this, "Notifications permission granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Notifications permission rejected", Toast.LENGTH_SHORT).show()
+            }
+        }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -31,6 +44,13 @@ class LoginActivity : AppCompatActivity() {
         sharedPref = SessionManager(this)
 
         setupButton()
+        checkPermissions()
+    }
+
+    private fun checkPermissions() {
+        if (Build.VERSION.SDK_INT >= 33){
+            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
     }
 
     private fun setupButton() {
@@ -76,16 +96,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-//        val isLogin = sharedPreferences.getBoolean(IS_LOGIN, false)
-//        if (isLogin){
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//    }
 
     override fun onStart() {
         super.onStart()
@@ -97,8 +107,4 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        const val PREFS_NAME = "kupin_app"
-        const val IS_LOGIN = "login"
-    }
 }
