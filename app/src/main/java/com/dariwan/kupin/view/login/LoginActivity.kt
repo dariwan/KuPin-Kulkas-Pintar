@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.R
+import com.dariwan.kupin.core.utils.Constant.KEY_IS_LOGIN
+import com.dariwan.kupin.core.utils.SessionManager
 import com.dariwan.kupin.databinding.ActivityLoginBinding
 import com.dariwan.kupin.view.main.MainActivity
 import com.dariwan.kupin.view.register.RegisterActivity
@@ -19,12 +21,14 @@ import com.dariwan.kupin.view.register.RegisterActivity
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
+    private lateinit var sharedPref: SessionManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         loginViewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        sharedPref = SessionManager(this)
 
         setupButton()
     }
@@ -67,17 +71,25 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun saveLoginInfo() {
-        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.apply {
-            putBoolean(IS_LOGIN, true)
-        }.apply()
+        sharedPref.apply {
+            sharedPref.setBooleanPref(KEY_IS_LOGIN, true)
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val isLogin = sharedPreferences.getBoolean(IS_LOGIN, false)
+//    override fun onResume() {
+//        super.onResume()
+//        val sharedPreferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+//        val isLogin = sharedPreferences.getBoolean(IS_LOGIN, false)
+//        if (isLogin){
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
+//    }
+
+    override fun onStart() {
+        super.onStart()
+        val isLogin = sharedPref.isLogin
         if (isLogin){
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
