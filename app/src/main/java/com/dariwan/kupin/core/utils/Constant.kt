@@ -5,5 +5,6 @@ object Constant {
 
     const val KEY_USER_EMAIL = "key_user_email"
     const val KEY_NAME = "key_name"
+    const val KEY_IS_LOGIN = "key_login"
 
 }

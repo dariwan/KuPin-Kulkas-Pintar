@@ -1,19 +1,24 @@
 package com.dariwan.kupin.view.profile
 
+import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import com.dariwan.kupin.R
 import com.dariwan.kupin.core.utils.Constant.KEY_NAME
 import com.dariwan.kupin.core.utils.Constant.KEY_USER_EMAIL
 import com.dariwan.kupin.core.utils.SessionManager
 import com.dariwan.kupin.databinding.FragmentProfileBinding
+import com.dariwan.kupin.view.login.LoginActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
-
+@RequiresApi(Build.VERSION_CODES.O)
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private var db = Firebase.firestore
@@ -36,6 +41,15 @@ class ProfileFragment : Fragment() {
 
         getData()
         setData()
+        setButton()
+    }
+
+    private fun setButton() {
+        binding.btnLogout.setOnClickListener {
+            sharedPref.clearData()
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setData() {
