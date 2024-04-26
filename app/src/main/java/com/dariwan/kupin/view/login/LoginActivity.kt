@@ -46,9 +46,9 @@ class LoginActivity : AppCompatActivity() {
 
 
         if (email.isEmpty()){
-            binding.etEmailLayout.error = "Email harus di isi"
+            binding.etEmailLayout.error = "Email harus diisi"
         } else if (password.isEmpty()){
-            binding.etPasswordLayout.error = "Password harus di isi"
+            binding.etPasswordLayout.error = "Password harus diisi"
         } else {
             binding.progressBar.visibility = View.VISIBLE
             loginViewModel.loginUser(email, password, { user ->
