@@ -16,7 +16,7 @@
     <string name="daftar">Daftar</string>
     <string name="sudah_punya_akun_masuk">Sudah punya akun? Masuk</string>
     <string name="material_name">Material Name</string>
-    <string name="_10_10_10">10-10-10</string>
+    <string name="_10_10_10">0 - 0 - 0</string>
     <string name="_100">100</string>
     <string name="tambah_bahan">Tambah Bahan</string>
     <string name="nama_bahan">Nama Bahan</string>
@@ -32,4 +32,12 @@
     <string name="username_gmail_com">username@gmail.com</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="hi_user">Hi User</string>
+    <string name="simpan">Simpan</string>
+    <string name="error_field">Field ini harus diisi</string>
+    <string name="tidak_ada_data">Tidak ada data</string>
+    <string name="hapus_data">Hapus Data?</string>
+    <string name="message">message</string>
+    <string name="tidak">Tidak</string>
+    <string name="ya">Ya</string>
+    <string name="delete_message">Apakah kamu yakin ingin menghapus data ini?</string>
 </resources>
