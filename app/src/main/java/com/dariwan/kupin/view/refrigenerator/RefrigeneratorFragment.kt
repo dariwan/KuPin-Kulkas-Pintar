@@ -27,7 +27,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 
 @RequiresApi(Build.VERSION_CODES.O)
-
 class RefrigeneratorFragment : Fragment() {
     private lateinit var binding: FragmentRefrigeneratorBinding
     private lateinit var adapter: MaterialAdapter
@@ -36,7 +35,6 @@ class RefrigeneratorFragment : Fragment() {
     private var username: String? = null
 
     private var db = Firebase.firestore
-    private var email: String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

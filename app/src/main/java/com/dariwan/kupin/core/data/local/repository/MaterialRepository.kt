@@ -24,6 +24,7 @@ class MaterialRepository(application: Application) {
     }
 
     fun getAllMaterial(): LiveData<List<Material>> = mMaterialDao.getAllMterial()
+    fun getRecommendationMaterial(): LiveData<List<Material>> = mMaterialDao.getRecommendationMaterial()
     fun getAllMaterials(): LiveData<List<Material>> = mMaterialDao.getAllMaterials()
 
     fun insert(material: Material){
