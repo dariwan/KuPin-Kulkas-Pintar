@@ -41,4 +41,6 @@
     <string name="ya">Ya</string>
     <string name="delete_message">Apakah kamu yakin ingin menghapus data ini?</string>
     <string name="keluar">Keluar</string>
+    <string name="rekomendasi_bahan">Rekomendasi Bahan</string>
+    <string name="persediaan_hampir_habis">Persediaan Hampir Habis</string>
 </resources>

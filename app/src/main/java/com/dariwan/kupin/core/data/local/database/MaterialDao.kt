@@ -36,4 +36,7 @@ interface MaterialDao {
 
     @Query("UPDATE material SET notificationSent = :notificationSent WHERE id = :id")
     fun updateNotificationSent(id: Int, notificationSent: Int)
+
+    @Query("SELECT * FROM material WHERE quantity <= 5")
+    fun getRecommendationMaterial(): LiveData<List<Material>>
 }

@@ -11,22 +11,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dariwan.kupin.core.adapter.MaterialAdapter
 import com.dariwan.kupin.core.data.local.database.MaterialRoomDatabase
+import com.dariwan.kupin.core.utils.Constant
 import com.dariwan.kupin.core.utils.SessionManager
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.FragmentRefrigeneratorBinding
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.firestore
 
+@RequiresApi(Build.VERSION_CODES.O)
 class RefrigeneratorFragment : Fragment() {
-   private lateinit var binding: FragmentRefrigeneratorBinding
-   private lateinit var adapter: MaterialAdapter
-   private lateinit var refrigeneratorViewModel: RefrigeneratorViewModel
-   private lateinit var sharedPref: SessionManager
-   private var username: String? = null
+    private lateinit var binding: FragmentRefrigeneratorBinding
+    private lateinit var adapter: MaterialAdapter
+    private lateinit var refrigeneratorViewModel: RefrigeneratorViewModel
+    private lateinit var sharedPref: SessionManager
+    private var username: String? = null
+
+    private var db = Firebase.firestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -45,16 +53,29 @@ class RefrigeneratorFragment : Fragment() {
         setData()
         //setupPermission()
         checkData()
+        getData()
     }
 
+    private fun getData() {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+
+
+        if (userId != null) {
+            db.collection("user").document(userId).get()
+                .addOnSuccessListener { document ->
+                    val username = document.getString("username")
+                    binding.tvUsername.text = "Hi $username"
+                }
+        }
+    }
 
 
     private fun checkData() {
 
         val materialList = MaterialRoomDatabase.getDatabase(requireContext()).materialDao()
 
-        materialList.getAllMaterials().observeForever{materials ->
-            materials.forEach {material ->
+        materialList.getAllMaterials().observeForever { materials ->
+            materials.forEach { material ->
                 Log.e("cek_data", "$material")
             }
         }
@@ -70,10 +91,10 @@ class RefrigeneratorFragment : Fragment() {
     }
 
     private fun setupRv() {
-        refrigeneratorViewModel.getAllMaterial().observe(requireActivity()){materialList ->
-            if (materialList != null){
+        refrigeneratorViewModel.getAllMaterial().observe(requireActivity()) { materialList ->
+            if (materialList != null) {
                 adapter.setListMaterial(materialList)
-            } else{
+            } else {
                 binding.tvNoData.visibility = View.VISIBLE
             }
         }

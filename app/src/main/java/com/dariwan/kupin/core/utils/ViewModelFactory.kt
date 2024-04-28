@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.view.main.MainViewModel
+import com.dariwan.kupin.view.recomendation.RecomendationViewModel
 import com.dariwan.kupin.view.refrigenerator.RefrigeneratorViewModel
 import com.dariwan.kupin.view.refrigenerator.addmaterial.AddMaterialViewModel
 import com.dariwan.kupin.view.refrigenerator.detail.DetailViewModel
@@ -29,6 +30,8 @@ class ViewModelFactory private constructor(private val mApplication: Application
             return EditMaterialViewModel(mApplication) as T
         } else if (modelClass.isAssignableFrom(MainViewModel::class.java)){
             return MainViewModel(mApplication) as T
+        } else if (modelClass.isAssignableFrom(RecomendationViewModel::class.java)){
+            return RecomendationViewModel(mApplication) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class : ${modelClass.name}")
     }

@@ -18,6 +18,7 @@ import com.dariwan.kupin.view.login.LoginActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
+
 @RequiresApi(Build.VERSION_CODES.O)
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -64,7 +65,7 @@ class ProfileFragment : Fragment() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
 
-        if (userId != null){
+        if (userId != null) {
             db.collection("user").document(userId).get()
                 .addOnSuccessListener { document ->
                     val username = document.getString("username")
