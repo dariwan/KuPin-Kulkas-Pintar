@@ -96,6 +96,8 @@ class MainActivity : AppCompatActivity() {
                 if (materialDate != null){
                     val difference = ChronoUnit.DAYS.between(currentDate, materialDate)
                     if (difference <= 5 && difference.toInt() != 0 && material.notificationSent == 0){
+
+                        //revisi kata kata notif
                         val notificationMessage = "Persediaan ${material.name} akan habis dalam $difference hari."
                         val notificationId = material.id
                         material.notificationSent = 1

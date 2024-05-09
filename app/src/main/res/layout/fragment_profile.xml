@@ -31,10 +31,11 @@
 
     <ImageView
         android:id="@+id/iv_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_marginTop="100dp"
         android:src="@drawable/img_profile"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
         android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
