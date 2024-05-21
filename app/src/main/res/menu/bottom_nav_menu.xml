@@ -2,22 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/fragmentRefrigerator"
-        android:title="@string/kulkasku"
-        android:icon="@drawable/ic_refrigerator"/>
+        android:title="@string/beranda"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/page_3"
+        android:enabled="false"
+        android:title="" />
 
     <item android:id="@+id/fragmentRecipe"
         android:title="@string/resep"
         android:icon="@drawable/ic_recipe"/>
-
-    <item android:id="@+id/fragmentBlank"
-        android:title=""
-        android:enabled="false"/>
-
-    <item android:id="@+id/fragmentRecomm"
-        android:title="@string/rekomendasi"
-        android:icon="@drawable/ic_recom"/>
-
-    <item android:id="@+id/fragmentUser"
-        android:title="@string/Profil"
-        android:icon="@drawable/ic_user"/>
 </menu>
