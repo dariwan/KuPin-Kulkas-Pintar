@@ -1,4 +1,4 @@
-package com.dariwan.kupin.view.refrigenerator.addmaterial
+package com.dariwan.kupin.view.home.addmaterial
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -7,8 +7,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +15,10 @@ import com.dariwan.kupin.core.data.local.database.Material
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import java.text.SimpleDateFormat
 import com.dariwan.kupin.databinding.ActivityAddMaterialBinding
+import com.dariwan.kupin.view.home.material.MaterialActivity
 import com.dariwan.kupin.view.main.MainActivity
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("SimpleDateFormat")
@@ -75,11 +76,6 @@ class AddMaterialActivity : AppCompatActivity() {
     }
 
     private fun setupButton() {
-        binding.ivBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.btnSimpan.setOnClickListener {
             createMaterial()
         }
@@ -88,8 +84,12 @@ class AddMaterialActivity : AppCompatActivity() {
     private fun createMaterial() {
         val materialName = binding.etMaterialName.text.toString()
         val materialQuantity = binding.etMaterialQuantity.text.toString()
+        val satuan = binding.spSatuan.selectedItem.toString()
+        val category = binding.spCategory.selectedItem.toString()
         val dateMaterial = materialDate
-
+        val date = LocalDate.now()
+        val formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy")
+        val dateNow = date.format(formatter)
         if (materialName.isEmpty()) {
             binding.etMaterialNameLayout.error = getString(R.string.error_field)
             return
@@ -102,15 +102,19 @@ class AddMaterialActivity : AppCompatActivity() {
                 material?.name = materialName
                 material?.quantity = materialQuantity.toInt()
                 material?.date = dateMaterial
+                material?.date_input = dateNow
+                material?.satuan = satuan
+                material?.category = category
                 Log.e(
                     "data_material",
-                    "data: ${material?.name}, ${material?.quantity}, ${material?.date}"
+                    "data: ${material?.name}, ${material?.quantity}, ${material?.date}, ${material?.date_input}, " +
+                            "${material?.satuan}, ${material?.category}"
                 )
             }
             addMaterialViewModel.insert(material as Material)
             Log.e("data_material", "data: $material")
             Toast.makeText(this, "Data berhasil dibuat", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MaterialActivity::class.java)
             startActivity(intent)
         }
     }

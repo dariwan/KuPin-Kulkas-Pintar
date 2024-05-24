@@ -16,7 +16,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="140dp"
         android:layout_margin="9dp">
 
         <TextView
@@ -35,7 +35,6 @@
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_calendar"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -69,9 +68,9 @@
             android:id="@+id/iv_minus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="20dp"
             android:src="@drawable/ic_minus"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_date"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_category"
             app:layout_constraintEnd_toStartOf="@+id/tv_quantity"
             app:layout_constraintTop_toTopOf="@+id/tv_material" />
 
@@ -107,6 +106,27 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_quantity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_quantity" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_category"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/kategori"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -17,6 +17,9 @@ data class RecipeItem(
     @SerializedName("title")
     val title: String,
 
-    @SerializedName("url")
-    val url: String,
+    @SerializedName("deskripsi")
+    val deskripsi: String,
+
+    @SerializedName("image")
+    val image: String,
 )

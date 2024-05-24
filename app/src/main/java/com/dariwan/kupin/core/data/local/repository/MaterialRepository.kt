@@ -27,6 +27,13 @@ class MaterialRepository(application: Application) {
     fun getRecommendationMaterial(): LiveData<List<Material>> = mMaterialDao.getRecommendationMaterial()
     fun getAllMaterials(): LiveData<List<Material>> = mMaterialDao.getAllMaterials()
 
+    fun getCategory(category: String): LiveData<List<Material>>{
+        return mMaterialDao.getCategory(category)
+    }
+
+    fun getMaterialsByDate(startDate: String, endDate: String): LiveData<List<Material>>{
+        return mMaterialDao.getAllMaterialsByDate(startDate, endDate)
+    }
     fun insert(material: Material){
         executorService.execute{
             mMaterialDao.insert(material)
@@ -39,9 +46,9 @@ class MaterialRepository(application: Application) {
         }
     }
 
-    fun update(id: Int, nameValue: String, quantityValue: Int, dateValue: String){
+    fun update(id: Int, nameValue: String, quantityValue: Int, dateValue: String, satuan: String, category: String){
         executorService.execute{
-            mMaterialDao.update(id, nameValue, quantityValue, dateValue)
+            mMaterialDao.update(id, nameValue, quantityValue, dateValue, satuan, category)
         }
 
     }

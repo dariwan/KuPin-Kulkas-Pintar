@@ -1,4 +1,4 @@
-package com.dariwan.kupin.view.refrigenerator.detail
+package com.dariwan.kupin.view.home.detail
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -20,7 +20,8 @@ import com.dariwan.kupin.core.data.local.database.Material
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.ActivityDetailMaterialBinding
 import com.dariwan.kupin.view.main.MainActivity
-import com.dariwan.kupin.view.refrigenerator.editmaterial.EditMaterialActivity
+import com.dariwan.kupin.view.home.editmaterial.EditMaterialActivity
+import com.dariwan.kupin.view.home.material.MaterialActivity
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -50,6 +51,8 @@ class DetailMaterialActivity : AppCompatActivity() {
         materialName = intent.getStringExtra(NAME_MATERIAL)
         quantity = intent.getIntExtra(QUANTITY_MATERIAL, 0)
         date = intent.getStringExtra(DATE_MATERIAL)
+        val satuan = intent.getStringExtra(SATUAN_MATERIAL)
+        val category = intent.getStringExtra(CATEGORY_MATERIAL)
 
         val formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy")
         val materialDate = LocalDate.parse(date, formatter)
@@ -57,18 +60,14 @@ class DetailMaterialActivity : AppCompatActivity() {
         val dayDifference = ChronoUnit.DAYS.between(dateNow, materialDate)
 
         binding.tvMaterialName.text = materialName
-        binding.tvQuantity.text = "$quantity Buah"
+        binding.tvQuantity.text = "$quantity $satuan"
         binding.tvDate.text = date
+        binding.tvCategory.text = category
         Log.e("day_difference", "$dayDifference")
         binding.tvLimitComsumtion.text = "$dayDifference Hari"
     }
 
     private fun setupButton() {
-        binding.ivBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
         binding.btnDelete.setOnClickListener {
             val deleteMessage = getString(R.string.delete_message)
             showDialogDelete(deleteMessage)
@@ -133,6 +132,8 @@ class DetailMaterialActivity : AppCompatActivity() {
         const val NAME_MATERIAL = "name_material"
         const val QUANTITY_MATERIAL = "quantity_material"
         const val DATE_MATERIAL = "date_material"
+        const val SATUAN_MATERIAL = "satuan_material"
+        const val CATEGORY_MATERIAL = "category_material"
         const val ID_MATERIAL = "id_material"
     }
 }

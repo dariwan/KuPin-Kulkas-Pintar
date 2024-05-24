@@ -10,12 +10,9 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dariwan.kupin.R
-import com.dariwan.kupin.core.adapter.MaterialAdapter
 import com.dariwan.kupin.core.adapter.MaterialRecommendationAdapter
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.FragmentRecomendationBinding
-import com.dariwan.kupin.view.refrigenerator.RefrigeneratorViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
 class RecomendationFragment : Fragment() {

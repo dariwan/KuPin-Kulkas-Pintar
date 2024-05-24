@@ -1,4 +1,4 @@
-package com.dariwan.kupin.view.refrigenerator.editmaterial
+package com.dariwan.kupin.view.home.editmaterial
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -15,7 +15,8 @@ import com.dariwan.kupin.core.data.local.database.Material
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.ActivityEditMaterialBinding
 import com.dariwan.kupin.view.main.MainActivity
-import com.dariwan.kupin.view.refrigenerator.detail.DetailMaterialActivity
+import com.dariwan.kupin.view.home.detail.DetailMaterialActivity
+import com.dariwan.kupin.view.home.material.MaterialActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
@@ -45,11 +46,6 @@ class EditMaterialActivity : AppCompatActivity() {
         binding.btnSimpan.setOnClickListener {
             updateData()
         }
-
-        binding.ivBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun updateData() {
@@ -57,6 +53,10 @@ class EditMaterialActivity : AppCompatActivity() {
 
         val materialName = binding.etMaterialName.text.toString()
         val materialQuantity = binding.etMaterialQuantity.text.toString()
+        val quantity = materialQuantity.toInt()
+        val satuan = binding.spSatuan.selectedItem.toString()
+        val category = binding.spCategory.selectedItem.toString()
+
         val dateMaterial = materialDate
 
         if (materialName.isEmpty()) {
@@ -67,9 +67,8 @@ class EditMaterialActivity : AppCompatActivity() {
         } else if (dateMaterial.isNullOrEmpty()) {
             Toast.makeText(this, "Tanggal harus dipilih", Toast.LENGTH_SHORT).show()
         } else {
-            val quantity = materialQuantity.toInt()
             Log.e("update", "${id}, ${materialName}, ${quantity}, ${dateMaterial}")
-            editMaterialViewModel.update(id!!, materialName, quantity, dateMaterial)
+            editMaterialViewModel.update(id!!, materialName, quantity, dateMaterial, satuan, category)
             Toast.makeText(this, "Data berhasil diubah", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

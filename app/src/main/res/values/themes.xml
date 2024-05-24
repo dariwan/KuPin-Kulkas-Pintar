@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.KuPin" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         Customize your light theme here.
+         <item name="colorPrimary">@color/white</item>
     </style>
 
     <style name="Theme.KuPin" parent="Base.Theme.KuPin" />
@@ -14,5 +14,21 @@
     <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
         <item name="cornerSize">50%</item>
         <item name="color">@color/black</item>
+    </style>
+
+    <style name="My_Widget.MaterialComponents.Chip.Choice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/bg_chip_state_list</item>
+    </style>
+
+    <style name="yelow">
+        <item name="background">
+            @color/yelow
+        </item>
+        <item name="cornerRadius">
+            20dp
+        </item>
+        <item name="android:padding">
+            10dp
+        </item>
     </style>
 </resources>

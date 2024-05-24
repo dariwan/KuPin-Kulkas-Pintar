@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.home.material.MaterialActivity">
+
+
+
+    <TextView
+        android:id="@+id/tv_title_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/bahan_bahan"
+        android:textColor="@color/blue_1"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/tidak_ada_data"
+        android:textSize="30sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <HorizontalScrollView
+        android:id="@+id/sc_chip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_page">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_category"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:singleSelection="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_page">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_daging"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/My_Widget.MaterialComponents.Chip.Choice"
+                android:text="@string/daging"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_sayur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/My_Widget.MaterialComponents.Chip.Choice"
+                android:text="@string/sayur"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_buah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/My_Widget.MaterialComponents.Chip.Choice"
+                android:text="@string/buah"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_bahan_dapur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/My_Widget.MaterialComponents.Chip.Choice"
+                android:text="@string/bahan_dapur"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_minuman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/My_Widget.MaterialComponents.Chip.Choice"
+                android:text="@string/minuman"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_makanan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/My_Widget.MaterialComponents.Chip.Choice"
+                android:text="@string/makanan"/>
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_material"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sc_chip"
+        tools:listitem="@layout/material_list" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/blue_1"
+        app:tint="@android:color/white"
+        android:src="@drawable/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/add_data" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

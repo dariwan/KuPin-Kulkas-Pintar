@@ -16,8 +16,7 @@ import com.dariwan.kupin.R
 import com.dariwan.kupin.core.utils.NotificationUtils
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.ActivityMainBinding
-import com.dariwan.kupin.view.refrigenerator.RefrigeneratorViewModel
-import com.dariwan.kupin.view.refrigenerator.addmaterial.AddMaterialActivity
+import com.dariwan.kupin.view.home.addmaterial.AddMaterialActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -71,11 +70,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBottomNavigation() {
         binding.bottomNavMenu.visibility = View.VISIBLE
+        binding.bottomAppBar.visibility = View.VISIBLE
         binding.fab.visibility = View.VISIBLE
     }
 
     private fun hideBottomNavigation() {
         binding.bottomNavMenu.visibility = View.GONE
+        binding.bottomAppBar.visibility = View.GONE
         binding.fab.visibility = View.GONE
     }
 

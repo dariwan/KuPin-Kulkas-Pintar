@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-
 
     <application
         android:allowBackup="true"
@@ -17,13 +16,22 @@
         android:theme="@style/Theme.KuPin"
         tools:targetApi="31">
         <activity
-            android:name=".view.refrigenerator.editmaterial.EditMaterialActivity"
+            android:name=".view.recipe.detail.DetailRecipeActivity"
             android:exported="false" />
         <activity
-            android:name=".view.refrigenerator.detail.DetailMaterialActivity"
+            android:name=".view.home.report.ReportActivity"
             android:exported="false" />
         <activity
-            android:name=".view.refrigenerator.addmaterial.AddMaterialActivity"
+            android:name=".view.home.material.MaterialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.editmaterial.EditMaterialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.detail.DetailMaterialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.addmaterial.AddMaterialActivity"
             android:exported="false" />
         <activity
             android:name=".view.register.RegisterActivity"

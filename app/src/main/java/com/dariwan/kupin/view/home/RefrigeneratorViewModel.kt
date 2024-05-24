@@ -1,4 +1,4 @@
-package com.dariwan.kupin.view.refrigenerator
+package com.dariwan.kupin.view.home
 
 import android.app.Application
 import android.os.Build
@@ -20,5 +20,8 @@ class RefrigeneratorViewModel(application: Application): ViewModel() {
         mMaterialRepository.decrementQuantity(id)
     }
 
+    fun getCategory(category: String): LiveData<List<Material>>{
+        return mMaterialRepository.getCategory(category)
+    }
 
 }

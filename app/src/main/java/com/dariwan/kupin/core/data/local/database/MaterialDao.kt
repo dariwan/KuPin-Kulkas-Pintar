@@ -16,8 +16,8 @@ interface MaterialDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(material: Material)
 
-    @Query("UPDATE material SET name = :nameValue, quantity = :quantityValue, date = :dateValue WHERE id = :id")
-    fun update(id: Int, nameValue: String, quantityValue: Int, dateValue: String)
+    @Query("UPDATE material SET name = :nameValue, quantity = :quantityValue, date = :dateValue, satuan = :satuan, category = :category WHERE id = :id")
+    fun update(id: Int, nameValue: String, quantityValue: Int, dateValue: String, satuan: String, category: String)
 
     @Query("DELETE FROM material WHERE id = :id")
     fun delete(id: Int)
@@ -39,4 +39,10 @@ interface MaterialDao {
 
     @Query("SELECT * FROM material WHERE quantity <= 5")
     fun getRecommendationMaterial(): LiveData<List<Material>>
+
+    @Query("SELECT * FROM material WHERE date_input BETWEEN :startDate AND :endDate")
+    fun getAllMaterialsByDate(startDate: String, endDate: String): LiveData<List<Material>>
+
+    @Query("SELECT * FROM material WHERE category = :category")
+    fun getCategory(category: String): LiveData<List<Material>>
 }

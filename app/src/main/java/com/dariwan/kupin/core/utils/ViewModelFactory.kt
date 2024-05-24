@@ -1,17 +1,18 @@
 package com.dariwan.kupin.core.utils
 
 import android.app.Application
-import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.view.main.MainViewModel
 import com.dariwan.kupin.view.recomendation.RecomendationViewModel
-import com.dariwan.kupin.view.refrigenerator.RefrigeneratorViewModel
-import com.dariwan.kupin.view.refrigenerator.addmaterial.AddMaterialViewModel
-import com.dariwan.kupin.view.refrigenerator.detail.DetailViewModel
-import com.dariwan.kupin.view.refrigenerator.editmaterial.EditMaterialViewModel
+import com.dariwan.kupin.view.home.RefrigeneratorViewModel
+import com.dariwan.kupin.view.home.addmaterial.AddMaterialViewModel
+import com.dariwan.kupin.view.home.detail.DetailViewModel
+import com.dariwan.kupin.view.home.editmaterial.EditMaterialViewModel
+import com.dariwan.kupin.view.home.report.ReportViewModel
+import com.dariwan.kupin.view.recipe.GetAllDataViewModel
 import java.lang.IllegalArgumentException
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -32,6 +33,10 @@ class ViewModelFactory private constructor(private val mApplication: Application
             return MainViewModel(mApplication) as T
         } else if (modelClass.isAssignableFrom(RecomendationViewModel::class.java)){
             return RecomendationViewModel(mApplication) as T
+        } else if (modelClass.isAssignableFrom(ReportViewModel::class.java)){
+            return ReportViewModel(mApplication) as T
+        } else if (modelClass.isAssignableFrom(GetAllDataViewModel::class.java)){
+            return GetAllDataViewModel(mApplication) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class : ${modelClass.name}")
     }

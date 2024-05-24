@@ -2,7 +2,6 @@ package com.dariwan.kupin.core.adapter
 
 import android.app.Activity
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +13,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dariwan.kupin.core.data.local.database.Material
 import com.dariwan.kupin.core.utils.MaterialDiffCallback
-import com.dariwan.kupin.core.utils.NotificationUtils
 import com.dariwan.kupin.databinding.MaterialListBinding
-import com.dariwan.kupin.view.refrigenerator.RefrigeneratorViewModel
-import com.dariwan.kupin.view.refrigenerator.addmaterial.AddMaterialActivity
-import com.dariwan.kupin.view.refrigenerator.detail.DetailMaterialActivity
+import com.dariwan.kupin.view.home.RefrigeneratorViewModel
+import com.dariwan.kupin.view.home.detail.DetailMaterialActivity
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -41,6 +38,7 @@ class MaterialAdapter(private val refrigeneratorViewModel: RefrigeneratorViewMod
                 tvMaterial.text = material.name
                 tvQuantity.text = material.quantity.toString()
                 tvDate.text = material.date
+                tvCategory.text = material.category
 
                 val formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy")
                 val currentDate = LocalDate.now()
@@ -78,6 +76,9 @@ class MaterialAdapter(private val refrigeneratorViewModel: RefrigeneratorViewMod
             intent.putExtra(DetailMaterialActivity.NAME_MATERIAL, material.name)
             intent.putExtra(DetailMaterialActivity.QUANTITY_MATERIAL, material.quantity)
             intent.putExtra(DetailMaterialActivity.DATE_MATERIAL, material.date)
+            intent.putExtra(DetailMaterialActivity.DATE_MATERIAL, material.date)
+            intent.putExtra(DetailMaterialActivity.SATUAN_MATERIAL, material.satuan)
+            intent.putExtra(DetailMaterialActivity.CATEGORY_MATERIAL, material.category)
             intent.putExtra(DetailMaterialActivity.ID_MATERIAL, material.id)
 
             val optionsCOmpact: ActivityOptionsCompat =

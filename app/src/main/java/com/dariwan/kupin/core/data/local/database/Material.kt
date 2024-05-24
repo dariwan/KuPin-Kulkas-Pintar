@@ -25,6 +25,15 @@ data class Material(
     @ColumnInfo(name = "date")
     var date: String? = null,
 
+    @ColumnInfo(name ="date_input")
+    var date_input: String? = null,
+
+    @ColumnInfo(name ="category")
+    var category: String? = null,
+
+    @ColumnInfo(name ="satuan")
+    var satuan: String? = null,
+
     @ColumnInfo(name = "notificationSent")
     var notificationSent: Int = 0
 ) : Parcelable

@@ -7,9 +7,13 @@
 
     <fragment
         android:id="@+id/fragmentRefrigerator"
-        android:name="com.dariwan.kupin.view.refrigenerator.RefrigeneratorFragment"
+        android:name="com.dariwan.kupin.view.home.RefrigeneratorFragment"
         android:label="fragment_refrigenerator"
-        tools:layout="@layout/fragment_refrigenerator" />
+        tools:layout="@layout/fragment_refrigenerator" >
+        <action
+            android:id="@+id/action_fragmentRefrigerator_to_materialFragment"
+            app:destination="@id/materialFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentRecipe"
         android:name="com.dariwan.kupin.view.recipe.RecipeFragment"
@@ -25,4 +29,13 @@
         android:name="com.dariwan.kupin.view.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/materialFragment"
+        android:name="com.dariwan.kupin.view.home.material.MaterialFragment"
+        android:label="fragment_material"
+        tools:layout="@layout/fragment_material" >
+        <action
+            android:id="@+id/action_materialFragment_to_fragmentRefrigerator"
+            app:destination="@id/fragmentRefrigerator" />
+    </fragment>
 </navigation>
