@@ -6,7 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".view.home.material.MaterialActivity">
 
-
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title_page"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_title_page"
+        app:tint="@color/blue_1" />
 
     <TextView
         android:id="@+id/tv_title_page"
@@ -56,11 +65,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_title_page">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip_daging"
+                android:id="@+id/chip_protein"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/My_Widget.MaterialComponents.Chip.Choice"
-                android:text="@string/daging"/>
+                android:text="@string/protein"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_sayur"
@@ -77,11 +86,11 @@
                 android:text="@string/buah"/>
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip_bahan_dapur"
+                android:id="@+id/chip_bumbu_dapur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/My_Widget.MaterialComponents.Chip.Choice"
-                android:text="@string/bahan_dapur"/>
+                android:text="@string/bumbu_dapur"/>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_minuman"

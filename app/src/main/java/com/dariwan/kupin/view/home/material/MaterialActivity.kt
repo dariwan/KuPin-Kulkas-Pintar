@@ -61,6 +61,10 @@ class MaterialActivity : AppCompatActivity() {
             val intent = Intent(this, AddMaterialActivity::class.java)
             startActivity(intent)
         }
+
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setupRv() {

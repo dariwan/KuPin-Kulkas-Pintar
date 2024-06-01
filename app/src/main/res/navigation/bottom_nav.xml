@@ -18,7 +18,11 @@
         android:id="@+id/fragmentRecipe"
         android:name="com.dariwan.kupin.view.recipe.RecipeFragment"
         android:label="fragment_recipe"
-        tools:layout="@layout/fragment_recipe" />
+        tools:layout="@layout/fragment_recipe" >
+        <action
+            android:id="@+id/action_fragmentRecipe_to_allRecipeFragment"
+            app:destination="@id/allRecipeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentRecomm"
         android:name="com.dariwan.kupin.view.recomendation.RecomendationFragment"
@@ -38,4 +42,9 @@
             android:id="@+id/action_materialFragment_to_fragmentRefrigerator"
             app:destination="@id/fragmentRefrigerator" />
     </fragment>
+    <fragment
+        android:id="@+id/allRecipeFragment"
+        android:name="com.dariwan.kupin.view.recipe.allrecipe.AllRecipeFragment"
+        android:label="fragment_all_recipe"
+        tools:layout="@layout/fragment_all_recipe" />
 </navigation>

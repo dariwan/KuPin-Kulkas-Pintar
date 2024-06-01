@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.dariwan.kupin.core.data.remote.apihelper.ApiService
 import com.dariwan.kupin.core.data.remote.request.MaterialRequest
+import com.dariwan.kupin.core.data.remote.response.AllRecipeItem
+import com.dariwan.kupin.core.data.remote.response.AllRecipesResponse
 import com.dariwan.kupin.core.data.remote.response.RecipeItem
 import com.dariwan.kupin.core.data.remote.response.RecommendationResponse
 import com.dariwan.kupin.core.utils.Result
@@ -43,6 +45,62 @@ class RecommendationRepository private constructor(
         })
         return recipeLieData
     }
+
+    fun getAllRecipe(): LiveData<Result<List<AllRecipeItem>>>{
+        val allRecipeData = MutableLiveData<Result<List<AllRecipeItem>>>()
+        allRecipeData.value = Result.Loading
+
+        apiService.getAllRecipe().enqueue(object : Callback<AllRecipesResponse> {
+            override fun onResponse(
+                call: Call<AllRecipesResponse>,
+                response: Response<AllRecipesResponse>,
+            ) {
+                if (response.isSuccessful){
+                    val allRecipe = response.body()?.recipes ?: emptyList()
+                    allRecipeData.value = Result.Success(allRecipe)
+                } else{
+                    allRecipeData.value = Result.Error("Gagal mendapatkan seluruh resep")
+                    Log.e("all_recipe", "Failed: Response Unsuccessful - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<AllRecipesResponse>, t: Throwable) {
+                Log.e("all_recipe", "Failed: Response Unsuccessful - ${t.message}")
+                allRecipeData.value = Result.Error("Terjadi kesalahan")
+            }
+
+        })
+        return allRecipeData
+    }
+
+    fun searchRecipe(name: String): LiveData<Result<List<AllRecipeItem>>>{
+        val searchRecipeData = MutableLiveData<Result<List<AllRecipeItem>>>()
+        searchRecipeData.value = Result.Loading
+
+        apiService.searchRecipe(name).enqueue(object : Callback<AllRecipesResponse>{
+            override fun onResponse(
+                call: Call<AllRecipesResponse>,
+                response: Response<AllRecipesResponse>,
+            ) {
+                if (response.isSuccessful){
+                    val allRecipe = response.body()?.recipes ?: emptyList()
+                    searchRecipeData.value = Result.Success(allRecipe)
+                } else{
+                    searchRecipeData.value = Result.Error("Gagal mendapatkan resep")
+                    Log.e("all_recipe", "Failed: Response Unsuccessful - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<AllRecipesResponse>, t: Throwable) {
+                Log.e("all_recipe", "Failed: Response Unsuccessful - ${t.message}")
+                searchRecipeData.value = Result.Error("Terjadi kesalahan")
+            }
+
+        })
+        return searchRecipeData
+    }
+
+
 
     companion object{
         @Volatile

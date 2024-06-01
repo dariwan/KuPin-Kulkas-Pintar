@@ -1,15 +1,15 @@
 <resources>
     <string-array name="category">
-        <item>Daging</item>
+        <item>Protein</item>
         <item>Sayur</item>
-        <item>Buah/Lembar/Siung/Butir/Ikat</item>
+        <item>Buah</item>
         <item>Bumbu Dapur</item>
         <item>Minuman</item>
         <item>Makanan</item>
     </string-array>
 
     <string-array name="satuan">
-        <item>Buah</item>
+        <item>Buah/Lembar/Siung/Butir/Ikat</item>
         <item>Ons</item>
         <item>Kg</item>
     </string-array>
@@ -81,4 +81,12 @@
     <string name="bahan_bahan_recipe">Bahan - Bahan</string>
     <string name="lorem_ipsum">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer rutrum, nisl quis faucibus tincidunt, elit erat consectetur elit, at placerat risus tellus in est. Nulla posuere, risus a facilisis semper, turpis dui tristique lacus, id dapibus lorem mauris sit amet arcu. Maecenas pellentesque arcu id justo sollicitudin facilisis. In consectetur, risus at efficitur fringilla, mauris metus fringilla arcu, eget tempus ex velit sed nulla. Fusce condimentum diam ligula, at consectetur dui vestibulum id. Sed vitae dolor nec erat cursus rhoncus non eget lorem. Vivamus cursus, quam vel dapibus rhoncus, lacus metus aliquam massa, sed eleifend ex nisi eget orci. Sed consectetur nisl vel laoreet feugiat. Donec suscipit justo dui, ac consequat turpis tristique et. Suspendisse potenti. Pellentesque pellentesque ex a justo malesuada, et lacinia odio suscipit. Proin faucibus, arcu vitae iaculis posuere, ex purus sodales lacus, vel facilisis diam massa in tellus. Cras eu magna id enim interdum facilisis. Vivamus blandit euismod arcu, nec posuere felis lacinia at. Nam fringilla, tortor et varius auctor, velit tortor dapibus lorem, sed eleifend orci ex vitae lacus.</string>
     <string name="langkah_langkah">Langkah - Langkah</string>
+    <string name="rekomendasi_resep">Rekomendasi Resep</string>
+    <string name="seluruh_resep">Seluruh Resep</string>
+    <string name="masukkan_nama_resep">Masukkan Nama Resep</string>
+    <string name="lemari_dapur">Lemari Dapur</string>
+    <string name="daftar_bahan_makanan_yang_ada_di_lemari_dapur">Daftar Bahan Makanan yang Ada di Lemari Dapur</string>
+    <string name="rekomendasi_resep_dan_seluruh_resep">Rekomendasi Resep dan Seluruh Resep</string>
+    <string name="protein">Protein</string>
+    <string name="bumbu_dapur">Bumbu Dapur</string>
 </resources>
