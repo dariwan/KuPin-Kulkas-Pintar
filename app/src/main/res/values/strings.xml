@@ -2,8 +2,8 @@
     <string-array name="category">
         <item>Daging</item>
         <item>Sayur</item>
-        <item>Buah</item>
-        <item>Bahan Dapur</item>
+        <item>Buah/Lembar/Siung/Butir/Ikat</item>
+        <item>Bumbu Dapur</item>
         <item>Minuman</item>
         <item>Makanan</item>
     </string-array>
