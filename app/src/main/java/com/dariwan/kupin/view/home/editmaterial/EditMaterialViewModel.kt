@@ -9,7 +9,11 @@ import com.dariwan.kupin.core.data.local.repository.MaterialRepository
 class EditMaterialViewModel(application: Application): ViewModel() {
     private val mMaterialRepository: MaterialRepository = MaterialRepository(application)
 
-    fun update(id: Int, nameValue: String, quantityValue: Int, dateValue: String, satuan: String, category: String){
-        mMaterialRepository.update(id, nameValue, quantityValue, dateValue, satuan, category)
+    fun update(id: Int, nameValue: String, quantityValue: Int, dateValue: String, satuan: String, category: String, lokasi_penyimpanan: String){
+        mMaterialRepository.update(id, nameValue, quantityValue, dateValue, satuan, category, lokasi_penyimpanan)
+    }
+
+    fun updateStorage(id: Int, nameValue: String, quantityValue: Int, dateValue: String, satuan: String, category: String, lokasi_penyimpanan: String){
+        mMaterialRepository.updateStorage(id, nameValue, quantityValue, dateValue, satuan, category, lokasi_penyimpanan)
     }
 }

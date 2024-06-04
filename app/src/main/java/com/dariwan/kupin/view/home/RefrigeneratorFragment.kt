@@ -21,6 +21,7 @@ import com.dariwan.kupin.core.data.local.database.MaterialRoomDatabase
 import com.dariwan.kupin.core.utils.SessionManager
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.FragmentRefrigeneratorBinding
+import com.dariwan.kupin.view.home.kitchenstorage.KitchenStorageActivity
 import com.dariwan.kupin.view.home.material.MaterialActivity
 import com.dariwan.kupin.view.home.report.ReportActivity
 import com.google.firebase.Firebase
@@ -64,6 +65,11 @@ class RefrigeneratorFragment : Fragment() {
                 NavOptions.Builder()
                     .setPopUpTo(R.id.fragmentRefrigerator, true)
                     .build())
+        }
+
+        binding.cardKitchenCabinets.setOnClickListener {
+            val intent = Intent(requireContext(), KitchenStorageActivity::class.java)
+            startActivity(intent)
         }
     }
 

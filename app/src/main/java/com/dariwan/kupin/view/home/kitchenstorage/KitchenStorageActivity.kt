@@ -1,4 +1,4 @@
-package com.dariwan.kupin.view.home.material
+package com.dariwan.kupin.view.home.kitchenstorage
 
 import android.content.Intent
 import android.os.Build
@@ -9,34 +9,34 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dariwan.kupin.R
+import com.dariwan.kupin.core.adapter.KitchenStorageAdapter
 import com.dariwan.kupin.core.adapter.MaterialAdapter
 import com.dariwan.kupin.core.utils.ViewModelFactory
-import com.dariwan.kupin.databinding.ActivityMaterialBinding
-import com.dariwan.kupin.view.home.RefrigeneratorFragment
+import com.dariwan.kupin.databinding.ActivityKitchenStorageBinding
 import com.dariwan.kupin.view.home.RefrigeneratorViewModel
 import com.dariwan.kupin.view.home.addkitchenstorage.AddKitchenStorageActivity
 import com.dariwan.kupin.view.home.addmaterial.AddMaterialActivity
 import com.google.android.material.chip.Chip
 
 @RequiresApi(Build.VERSION_CODES.O)
-class MaterialActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMaterialBinding
-    private lateinit var adapter: MaterialAdapter
-    private lateinit var refrigeneratorViewModel: RefrigeneratorViewModel
+class KitchenStorageActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityKitchenStorageBinding
+    private lateinit var adapter: KitchenStorageAdapter
+    private lateinit var kitchenStorageViewModel: KitchenStorageViewModel
     private val rotateOpen: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim) }
     private val rotateClose: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim) }
     private val fromBottom: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim) }
     private val toBottom: Animation by lazy { AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim) }
     private var clicked = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMaterialBinding.inflate(layoutInflater)
+        binding = ActivityKitchenStorageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        refrigeneratorViewModel = obtainViewModel(this as AppCompatActivity)
+        kitchenStorageViewModel = obtainViewModel(this as AppCompatActivity)
         setupRv()
         setupButton()
         setupChip()
@@ -47,7 +47,7 @@ class MaterialActivity : AppCompatActivity() {
             val chip: Chip? = group.findViewById(checkedIds)
             if (checkedIds != View.NO_ID) {
                 chip?.let {
-                    refrigeneratorViewModel.getCategory(chip?.text.toString())
+                    kitchenStorageViewModel.getCategoryStorage(chip?.text.toString())
                         .observe(this) { materialList ->
                             if (materialList != null) {
                                 adapter.setListMaterial(materialList)
@@ -55,7 +55,7 @@ class MaterialActivity : AppCompatActivity() {
                         }
                 }
             } else {
-                refrigeneratorViewModel.getAllMaterial().observe(this) { materialList ->
+                kitchenStorageViewModel.getAllMaterialStorage().observe(this) { materialList ->
                     if (materialList != null) {
                         adapter.setListMaterial(materialList)
                     }
@@ -74,12 +74,12 @@ class MaterialActivity : AppCompatActivity() {
         }
 
         binding.fabStorage.setOnClickListener {
-            val intent = Intent(this@MaterialActivity, AddKitchenStorageActivity::class.java)
+            val intent = Intent(this@KitchenStorageActivity, AddKitchenStorageActivity::class.java)
             startActivity(intent)
 
         }
         binding.fabKulkasku.setOnClickListener {
-            val intent = Intent(this@MaterialActivity, AddMaterialActivity::class.java)
+            val intent = Intent(this@KitchenStorageActivity, AddMaterialActivity::class.java)
             startActivity(intent)
         }
     }
@@ -113,23 +113,23 @@ class MaterialActivity : AppCompatActivity() {
     }
 
     private fun setupRv() {
-        refrigeneratorViewModel.getAllMaterial().observe(this) { materialList ->
-            if (materialList != null) {
-                adapter.setListMaterial(materialList)
+        kitchenStorageViewModel.getAllMaterialStorage().observe(this){storageList ->
+            if (storageList != null) {
+                adapter.setListMaterial(storageList)
             } else {
                 binding.tvNoData.visibility = View.VISIBLE
                 binding.rvMaterial.visibility = View.GONE
             }
         }
 
-        adapter = MaterialAdapter(refrigeneratorViewModel)
+        adapter = KitchenStorageAdapter(kitchenStorageViewModel)
         binding.rvMaterial.layoutManager = LinearLayoutManager(this)
         binding.rvMaterial.setHasFixedSize(true)
         binding.rvMaterial.adapter = adapter
     }
 
-    private fun obtainViewModel(activity: AppCompatActivity): RefrigeneratorViewModel {
+    private fun obtainViewModel(activity: AppCompatActivity): KitchenStorageViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
-        return ViewModelProvider(activity, factory).get(RefrigeneratorViewModel::class.java)
+        return ViewModelProvider(activity, factory).get(KitchenStorageViewModel::class.java)
     }
 }

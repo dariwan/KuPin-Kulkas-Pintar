@@ -1,9 +1,10 @@
 package com.dariwan.kupin.core.utils
 
 import androidx.recyclerview.widget.DiffUtil
+import com.dariwan.kupin.core.data.local.database.kitchencabinet.KitchenCabinet
 import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 
-class MaterialDiffCallback(private val oldMaterialList: List<Material>, private val newMaterialList: List<Material>): DiffUtil.Callback() {
+class StorageDiffCallback(private val oldMaterialList: List<KitchenCabinet>, private val newMaterialList: List<KitchenCabinet>): DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldMaterialList.size
     }
@@ -22,5 +23,4 @@ class MaterialDiffCallback(private val oldMaterialList: List<Material>, private 
 
         return oldMaterial.name == newMaterial.name && oldMaterial.quantity == newMaterial.quantity
     }
-
 }

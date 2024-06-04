@@ -1,6 +1,5 @@
 package com.dariwan.kupin.view.home.detail
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
@@ -16,43 +15,46 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.R
+import com.dariwan.kupin.core.data.local.database.kitchencabinet.KitchenCabinet
 import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.ActivityDetailMaterialBinding
-import com.dariwan.kupin.view.main.MainActivity
+import com.dariwan.kupin.databinding.ActivityDetailStorageBinding
 import com.dariwan.kupin.view.home.editmaterial.EditMaterialActivity
+import com.dariwan.kupin.view.home.editmaterial.EditStorageActivity
+import com.dariwan.kupin.view.main.MainActivity
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 @RequiresApi(Build.VERSION_CODES.O)
-class DetailMaterialActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDetailMaterialBinding
+class DetailStorageActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityDetailStorageBinding
     private lateinit var detailViewModel: DetailViewModel
-    private var material: Material? = null
+    private var storage: KitchenCabinet? = null
     private var materialName: String? = null
     private var quantity: Int? = 0
     private var date: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDetailMaterialBinding.inflate(layoutInflater)
+        binding = ActivityDetailStorageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        detailViewModel = obtainViewModel(this@DetailMaterialActivity)
-        material = Material()
+        detailViewModel = obtainViewModel(this@DetailStorageActivity)
+        storage = KitchenCabinet()
 
         setupButton()
         getData()
     }
 
-    @SuppressLint("SetTextI18n")
     private fun getData() {
-        materialName = intent.getStringExtra(NAME_MATERIAL)
-        quantity = intent.getIntExtra(QUANTITY_MATERIAL, 0)
-        date = intent.getStringExtra(DATE_MATERIAL)
-        val satuan = intent.getStringExtra(SATUAN_MATERIAL)
-        val category = intent.getStringExtra(CATEGORY_MATERIAL)
-        val location_storage = intent.getStringExtra(LOCATION_STORAGE)
+        materialName = intent.getStringExtra(DetailMaterialActivity.NAME_MATERIAL)
+        quantity = intent.getIntExtra(DetailMaterialActivity.QUANTITY_MATERIAL, 0)
+        date = intent.getStringExtra(DetailMaterialActivity.DATE_MATERIAL)
+        val satuan = intent.getStringExtra(DetailMaterialActivity.SATUAN_MATERIAL)
+        val category = intent.getStringExtra(DetailMaterialActivity.CATEGORY_MATERIAL)
+        val location_storage = intent.getStringExtra(DetailMaterialActivity.LOCATION_STORAGE)
 
         val formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy")
         val materialDate = LocalDate.parse(date, formatter)
@@ -79,11 +81,10 @@ class DetailMaterialActivity : AppCompatActivity() {
         }
     }
 
-
     private fun sendData() {
         val id = intent.getIntExtra(ID_MATERIAL, 0)
-        val intent = Intent(this, EditMaterialActivity::class.java)
-        intent.putExtra(EditMaterialActivity.ID_MATERIAL, id)
+        val intent = Intent(this, EditStorageActivity::class.java)
+        intent.putExtra(EditStorageActivity.ID_MATERIAL, id)
         Log.e("send_data", "$id")
         startActivity(intent)
     }
@@ -99,7 +100,7 @@ class DetailMaterialActivity : AppCompatActivity() {
 
     private fun showDialogDelete(deleteMessage: String) {
 
-        val id = intent.getIntExtra(ID_MATERIAL, 0)
+        val id = intent.getIntExtra(DetailMaterialActivity.ID_MATERIAL, 0)
 
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -128,6 +129,7 @@ class DetailMaterialActivity : AppCompatActivity() {
         val factory = ViewModelFactory.getInstance(activity.application)
         return ViewModelProvider(activity, factory).get(DetailViewModel::class.java)
     }
+
 
     companion object {
         const val NAME_MATERIAL = "name_material"

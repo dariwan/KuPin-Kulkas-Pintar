@@ -8,9 +8,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.view.main.MainViewModel
 import com.dariwan.kupin.view.recomendation.RecomendationViewModel
 import com.dariwan.kupin.view.home.RefrigeneratorViewModel
+import com.dariwan.kupin.view.home.addkitchenstorage.AddKitchenStorageViewModel
 import com.dariwan.kupin.view.home.addmaterial.AddMaterialViewModel
 import com.dariwan.kupin.view.home.detail.DetailViewModel
 import com.dariwan.kupin.view.home.editmaterial.EditMaterialViewModel
+import com.dariwan.kupin.view.home.kitchenstorage.KitchenStorageViewModel
 import com.dariwan.kupin.view.home.report.ReportViewModel
 import com.dariwan.kupin.view.recipe.GetAllDataViewModel
 import java.lang.IllegalArgumentException
@@ -37,6 +39,10 @@ class ViewModelFactory private constructor(private val mApplication: Application
             return ReportViewModel(mApplication) as T
         } else if (modelClass.isAssignableFrom(GetAllDataViewModel::class.java)){
             return GetAllDataViewModel(mApplication) as T
+        }else if (modelClass.isAssignableFrom(AddKitchenStorageViewModel::class.java)){
+            return AddKitchenStorageViewModel(mApplication) as T
+        }else if (modelClass.isAssignableFrom(KitchenStorageViewModel::class.java)){
+            return KitchenStorageViewModel(mApplication) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class : ${modelClass.name}")
     }

@@ -1,13 +1,10 @@
-package com.dariwan.kupin.core.data.local.database
+package com.dariwan.kupin.core.data.local.database.kulkasku
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
-import com.dariwan.kupin.core.data.local.database.Material
 
 
 @Dao
@@ -16,8 +13,8 @@ interface MaterialDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(material: Material)
 
-    @Query("UPDATE material SET name = :nameValue, quantity = :quantityValue, date = :dateValue, satuan = :satuan, category = :category WHERE id = :id")
-    fun update(id: Int, nameValue: String, quantityValue: Int, dateValue: String, satuan: String, category: String)
+    @Query("UPDATE material SET name = :nameValue, quantity = :quantityValue, date = :dateValue, satuan = :satuan, category = :category, lokasi_penyimpanan = :lokasi_penyimpanan WHERE id = :id")
+    fun update(id: Int, nameValue: String, quantityValue: Int, dateValue: String, satuan: String, category: String, lokasi_penyimpanan: String)
 
     @Query("DELETE FROM material WHERE id = :id")
     fun delete(id: Int)

@@ -36,21 +36,44 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = obtainViewModel(this as AppCompatActivity)
 
         setupBottomNav()
-        setupFab()
         checkDataMaterialDate()
-
+        checkNotifStorage()
     }
 
-    private fun setupFab() {
-        binding.fab.setOnClickListener {
-            val intent = Intent(this, AddMaterialActivity::class.java)
-            startActivity(intent)
-        }
+    private fun checkNotifStorage() {
+        mainViewModel.getAllStorage().observe(this, Observer { materials ->
+            materials.forEach { material ->
+                val formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy")
+                val currentDate = LocalDate.now()
+                val materialDate = LocalDate.parse(material.date, formatter)
+
+                Log.e("coba_worker_1", "current date: $currentDate, material date: $materialDate, status: ${material.notificationSent}")
+
+                if (materialDate != null){
+                    val difference = ChronoUnit.DAYS.between(currentDate, materialDate)
+                    if (difference <= 5 && difference.toInt() != 0 && material.notificationSent == 0){
+
+                        //revisi kata kata notif
+                        val notificationMessage = "Persediaan ${material.name} akan habis dalam $difference hari."
+                        val notificationId = material.id
+                        material.notificationSent = 1
+                        mainViewModel.updateNotificationStorage(material.id, 1)
+                        NotificationUtils.showNotification(applicationContext, "Peringatan Persediaan", notificationMessage, notificationId)
+                    }else if (material.quantity == 0){
+                        val notificationMessage = "Persediaan ${material.name} sudah habis."
+                        val notificationId = material.id
+                        material.notificationSent = 1
+                        mainViewModel.updateNotificationSent(material.id, 1)
+                        NotificationUtils.showNotification(applicationContext, "Peringatan Persediaan", notificationMessage, notificationId)
+                    }
+                }
+            }
+        })
     }
 
     private fun setupBottomNav() {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        val nav: BottomNavigationView = findViewById(R.id.bottom_nav_menu)
+        val nav: BottomNavigationView = findViewById(R.id.bottom_navigation)
         nav.itemIconTintList = null
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -65,19 +88,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        setupWithNavController(binding.bottomNavMenu, navController)
+        setupWithNavController(binding.bottomNavigation, navController)
     }
 
     private fun showBottomNavigation() {
-        binding.bottomNavMenu.visibility = View.VISIBLE
-        binding.bottomAppBar.visibility = View.VISIBLE
-        binding.fab.visibility = View.VISIBLE
+        binding.bottomNavigation.visibility = View.VISIBLE
     }
 
     private fun hideBottomNavigation() {
-        binding.bottomNavMenu.visibility = View.GONE
-        binding.bottomAppBar.visibility = View.GONE
-        binding.fab.visibility = View.GONE
+        binding.bottomNavigation.visibility = View.GONE
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): MainViewModel {
@@ -99,7 +118,13 @@ class MainActivity : AppCompatActivity() {
                     if (difference <= 5 && difference.toInt() != 0 && material.notificationSent == 0){
 
                         //revisi kata kata notif
-                        val notificationMessage = "Persediaan ${material.name} akan habis dalam $difference hari."
+                        val notificationMessage = "Persediaan ${material.name} akan melewati batas konsumsi dalam $difference hari."
+                        val notificationId = material.id
+                        material.notificationSent = 1
+                        mainViewModel.updateNotificationSent(material.id, 1)
+                        NotificationUtils.showNotification(applicationContext, "Peringatan Batas Konsumsi", notificationMessage, notificationId)
+                    }else if (material.quantity == 0){
+                        val notificationMessage = "Persediaan ${material.name} sudah habis."
                         val notificationId = material.id
                         material.notificationSent = 1
                         mainViewModel.updateNotificationSent(material.id, 1)

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.home.addmaterial.AddMaterialActivity">
-
+    tools:context=".view.home.editmaterial.EditStorageActivity">
 
     <TextView
         android:id="@+id/textView16"
@@ -14,7 +13,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/tambah_bahan_di_kulkas"
+        android:text="@string/edit_bahan"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -110,10 +109,10 @@
         android:id="@+id/sp_location_storage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:minHeight="50dp"
         android:layout_marginTop="8dp"
         android:entries="@array/storage_location_kulkasku"
-        android:minHeight="50dp"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -134,9 +133,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
         android:entries="@array/category"
         android:minHeight="50dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -145,10 +144,10 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/tanggal_batas_konsumsi"
         android:textSize="15sp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/sp_category" />
 
@@ -156,9 +155,9 @@
         android:id="@+id/iv_calendar"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
         android:clickable="true"
         android:focusable="true"
+        android:layout_marginTop="16dp"
         android:src="@drawable/ic_calendar_add"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -168,12 +167,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:background="@drawable/background_edittext"
         android:fontFamily="@font/poppins_regular"
-        android:paddingHorizontal="50dp"
-        android:paddingVertical="10dp"
         android:text="@string/_10_10_10"
         android:textSize="20sp"
+        android:paddingHorizontal="50dp"
+        android:paddingVertical="10dp"
+        android:background="@drawable/background_edittext"
         app:layout_constraintBottom_toBottomOf="@+id/iv_calendar"
         app:layout_constraintStart_toEndOf="@+id/iv_calendar"
         app:layout_constraintTop_toTopOf="@+id/iv_calendar" />
@@ -191,4 +190,5 @@
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="24dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

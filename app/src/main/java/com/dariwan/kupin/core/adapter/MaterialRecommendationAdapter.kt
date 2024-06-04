@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.dariwan.kupin.core.data.local.database.Material
+import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 import com.dariwan.kupin.core.utils.MaterialDiffCallback
-import com.dariwan.kupin.databinding.MaterialListBinding
 import com.dariwan.kupin.databinding.RecomMaterialListBinding
 
 @RequiresApi(Build.VERSION_CODES.O)

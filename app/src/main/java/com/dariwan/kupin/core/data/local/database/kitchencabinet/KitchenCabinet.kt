@@ -1,17 +1,15 @@
-package com.dariwan.kupin.core.data.local.database
+package com.dariwan.kupin.core.data.local.database.kitchencabinet
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
+
 
 @Entity
 @Parcelize
-data class Material(
+data class KitchenCabinet(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Int = 0,
@@ -35,5 +33,8 @@ data class Material(
     var satuan: String? = null,
 
     @ColumnInfo(name = "notificationSent")
-    var notificationSent: Int = 0
+    var notificationSent: Int = 0,
+
+    @ColumnInfo(name ="lokasi_penyimpanan")
+    var lokasi_penyimpanan: String? = null,
 ) : Parcelable

@@ -11,29 +11,34 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.dariwan.kupin.core.data.local.database.kitchencabinet.KitchenCabinet
 import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 import com.dariwan.kupin.core.utils.MaterialDiffCallback
+import com.dariwan.kupin.core.utils.StorageDiffCallback
 import com.dariwan.kupin.databinding.MaterialListBinding
+import com.dariwan.kupin.databinding.StorageListBinding
 import com.dariwan.kupin.view.home.RefrigeneratorViewModel
 import com.dariwan.kupin.view.home.detail.DetailMaterialActivity
+import com.dariwan.kupin.view.home.detail.DetailStorageActivity
+import com.dariwan.kupin.view.home.kitchenstorage.KitchenStorageViewModel
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 @RequiresApi(Build.VERSION_CODES.O)
-class MaterialAdapter(private val refrigeneratorViewModel: RefrigeneratorViewModel): RecyclerView.Adapter<MaterialAdapter.MaterialViewHolder>() {
-    private val listMaterial = ArrayList<Material>()
+class KitchenStorageAdapter(private val kitchenStorageViewModel: KitchenStorageViewModel): RecyclerView.Adapter<KitchenStorageAdapter.StorageViewHolder>() {
+    private val listStorage = ArrayList<KitchenCabinet>()
 
-    fun setListMaterial(listMaterial: List<Material>){
-        val diffCallback = MaterialDiffCallback(this.listMaterial, listMaterial)
+    fun setListMaterial(listStorage: List<KitchenCabinet>){
+        val diffCallback = StorageDiffCallback(this.listStorage, listStorage)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
-        this.listMaterial.clear()
-        this.listMaterial.addAll(listMaterial)
+        this.listStorage.clear()
+        this.listStorage.addAll(listStorage)
         diffResult.dispatchUpdatesTo(this)
     }
 
-    inner class MaterialViewHolder (val binding: MaterialListBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(material: Material){
+    class StorageViewHolder(val binding: StorageListBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(material: KitchenCabinet){
             with(binding){
                 tvMaterial.text = material.name
                 tvQuantity.text = material.quantity.toString()
@@ -55,33 +60,37 @@ class MaterialAdapter(private val refrigeneratorViewModel: RefrigeneratorViewMod
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialViewHolder {
-        val binding = MaterialListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MaterialViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StorageViewHolder {
+        val binding = StorageListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return StorageViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: MaterialViewHolder, position: Int) {
-        val material = listMaterial[position]
+    override fun getItemCount(): Int {
+        return listStorage.size
+    }
+
+    override fun onBindViewHolder(holder: StorageViewHolder, position: Int) {
+        val material = listStorage[position]
         holder.bind(material)
 
         holder.binding.ivAdd.setOnClickListener {
-            refrigeneratorViewModel.incrementQuantity(material.id)
+            kitchenStorageViewModel.incrementQuantityStorage(material.id)
         }
 
         holder.binding.ivMinus.setOnClickListener {
-            refrigeneratorViewModel.decrementQuantity(material.id)
+            kitchenStorageViewModel.decrementQuantityStorage(material.id)
         }
 
         holder.binding.root.setOnClickListener {
-            val intent = Intent(holder.itemView.context, DetailMaterialActivity::class.java)
-            intent.putExtra(DetailMaterialActivity.NAME_MATERIAL, material.name)
-            intent.putExtra(DetailMaterialActivity.QUANTITY_MATERIAL, material.quantity)
-            intent.putExtra(DetailMaterialActivity.DATE_MATERIAL, material.date)
-            intent.putExtra(DetailMaterialActivity.DATE_MATERIAL, material.date)
-            intent.putExtra(DetailMaterialActivity.SATUAN_MATERIAL, material.satuan)
-            intent.putExtra(DetailMaterialActivity.CATEGORY_MATERIAL, material.category)
-            intent.putExtra(DetailMaterialActivity.ID_MATERIAL, material.id)
-            intent.putExtra(DetailMaterialActivity.LOCATION_STORAGE, material.lokasi_penyimpanan)
+            val intent = Intent(holder.itemView.context, DetailStorageActivity::class.java)
+            intent.putExtra(DetailStorageActivity.NAME_MATERIAL, material.name)
+            intent.putExtra(DetailStorageActivity.QUANTITY_MATERIAL, material.quantity)
+            intent.putExtra(DetailStorageActivity.DATE_MATERIAL, material.date)
+            intent.putExtra(DetailStorageActivity.DATE_MATERIAL, material.date)
+            intent.putExtra(DetailStorageActivity.SATUAN_MATERIAL, material.satuan)
+            intent.putExtra(DetailStorageActivity.CATEGORY_MATERIAL, material.category)
+            intent.putExtra(DetailStorageActivity.ID_MATERIAL, material.id)
+            intent.putExtra(DetailStorageActivity.LOCATION_STORAGE, material.lokasi_penyimpanan)
 
             val optionsCOmpact: ActivityOptionsCompat =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -92,9 +101,5 @@ class MaterialAdapter(private val refrigeneratorViewModel: RefrigeneratorViewMod
                 )
             holder.itemView.context.startActivity(intent, optionsCOmpact.toBundle())
         }
-    }
-
-    override fun getItemCount(): Int {
-        return listMaterial.size
     }
 }

@@ -1,6 +1,5 @@
-package com.dariwan.kupin.view.home.addmaterial
+package com.dariwan.kupin.view.home.addkitchenstorage
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Build
@@ -13,41 +12,38 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.R
+import com.dariwan.kupin.core.data.local.database.kitchencabinet.KitchenCabinet
 import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 import com.dariwan.kupin.core.utils.ViewModelFactory
-import java.text.SimpleDateFormat
-import com.dariwan.kupin.databinding.ActivityAddMaterialBinding
-import com.dariwan.kupin.view.home.addkitchenstorage.AddKitchenStorageActivity
+import com.dariwan.kupin.databinding.ActivityAddKitchenStorageBinding
+import com.dariwan.kupin.view.home.addmaterial.AddMaterialActivity
+import com.dariwan.kupin.view.home.addmaterial.AddMaterialViewModel
 import com.dariwan.kupin.view.home.material.MaterialActivity
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
+
 @RequiresApi(Build.VERSION_CODES.O)
-@SuppressLint("SimpleDateFormat")
-class AddMaterialActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityAddMaterialBinding
+class AddKitchenStorageActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAddKitchenStorageBinding
     private val calendar = Calendar.getInstance()
-    private lateinit var addMaterialViewModel: AddMaterialViewModel
+    private lateinit var addKitchenStorageViewModel: AddKitchenStorageViewModel
     private var materialDate: String? = null
-    private var material: Material? = null
+    private var kitchenCabinet: KitchenCabinet? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddMaterialBinding.inflate(layoutInflater)
+        binding = ActivityAddKitchenStorageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        addMaterialViewModel = obtainViewModel(this@AddMaterialActivity)
-        material = Material()
+        addKitchenStorageViewModel = obtainViewModel(this@AddKitchenStorageActivity)
+        kitchenCabinet = KitchenCabinet()
 
         setupButton()
         setupCalendar()
+
     }
-
-
-    private fun obtainViewModel(activity: AppCompatActivity): AddMaterialViewModel {
-        val factory = ViewModelFactory.getInstance(activity.application)
-        return ViewModelProvider(activity, factory).get(AddMaterialViewModel::class.java)
-    }
-
 
     private fun setupCalendar() {
         val dataSetListener =
@@ -94,6 +90,7 @@ class AddMaterialActivity : AppCompatActivity() {
         val date = LocalDate.now()
         val formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy")
         val dateNow = date.format(formatter)
+
         if (materialName.isEmpty()) {
             binding.etMaterialNameLayout.error = getString(R.string.error_field)
             return
@@ -102,32 +99,34 @@ class AddMaterialActivity : AppCompatActivity() {
         } else if (dateMaterial.isNullOrEmpty()) {
             Toast.makeText(this, "Tanggal harus dipilih", Toast.LENGTH_SHORT).show()
         } else {
-            material.let { material ->
-                material?.name = materialName
-                material?.quantity = materialQuantity.toInt()
-                material?.date = dateMaterial
-                material?.date_input = dateNow
-                material?.satuan = satuan
-                material?.category = category
-                material?.lokasi_penyimpanan = location_storage
+            kitchenCabinet.let { kitchenCabinet ->
+                kitchenCabinet?.name = materialName
+                kitchenCabinet?.quantity = materialQuantity.toInt()
+                kitchenCabinet?.date = dateMaterial
+                kitchenCabinet?.date_input = dateNow
+                kitchenCabinet?.satuan = satuan
+                kitchenCabinet?.category = category
+                kitchenCabinet?.lokasi_penyimpanan = location_storage
                 Log.e(
                     "data_material",
-                    "data: ${material?.name}, ${material?.quantity}, ${material?.date}, ${material?.date_input}, " +
-                            "${material?.satuan}, ${material?.category}" +
-                            "${material?.lokasi_penyimpanan}"
+                    "data: ${kitchenCabinet?.name}, ${kitchenCabinet?.quantity}, ${kitchenCabinet?.date}, ${kitchenCabinet?.date_input}, " +
+                            "${kitchenCabinet?.satuan}, ${kitchenCabinet?.category}" +
+                            "${kitchenCabinet?.lokasi_penyimpanan}"
                 )
             }
-            addMaterialViewModel.insert(material as Material)
-            Log.e("data_material", "data: $material")
+            addKitchenStorageViewModel.insertKitchenStorage(kitchenCabinet as KitchenCabinet)
+            Log.e("data_material", "data: $kitchenCabinet")
             Toast.makeText(this, "Data berhasil dibuat", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MaterialActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
             finish()
         }
+
     }
 
-
-
-
+    private fun obtainViewModel(activity: AppCompatActivity): AddKitchenStorageViewModel {
+        val factory = ViewModelFactory.getInstance(activity.application)
+        return ViewModelProvider(activity, factory).get(AddKitchenStorageViewModel::class.java)
+    }
 }

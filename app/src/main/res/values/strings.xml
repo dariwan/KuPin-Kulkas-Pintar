@@ -12,6 +12,23 @@
         <item>Buah/Lembar/Siung/Butir/Ikat</item>
         <item>Ons</item>
         <item>Kg</item>
+        <item>Bungkus</item>
+    </string-array>
+
+    <string-array name="storage_location_kulkasku">
+        <item>Freezer</item>
+        <item>Chiller</item>
+    </string-array>
+
+    <string-array name="add_location">
+        <item>Lemari Dapur</item>
+        <item>KulkasKu</item>
+
+    </string-array>
+
+    <string-array name="storage_location_kitchen">
+        <item>Lemari Atas</item>
+        <item>Lemari Bawah</item>
     </string-array>
 
     <string name="app_name">kuPin</string>
@@ -89,4 +106,9 @@
     <string name="rekomendasi_resep_dan_seluruh_resep">Rekomendasi Resep dan Seluruh Resep</string>
     <string name="protein">Protein</string>
     <string name="bumbu_dapur">Bumbu Dapur</string>
+    <string name="lokasi_penyimanan">Lokasi Penyimanan</string>
+    <string name="freezer">Freezer</string>
+    <string name="tambah_di">Tambah Di</string>
+    <string name="tambah_bahan_di_lemari_dapur">Tambah Bahan di Lemari Dapur</string>
+    <string name="tambah_bahan_di_kulkas">Tambah Bahan di Kulkas</string>
 </resources>

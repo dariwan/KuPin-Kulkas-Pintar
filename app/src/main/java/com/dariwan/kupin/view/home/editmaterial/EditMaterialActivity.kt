@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.R
-import com.dariwan.kupin.core.data.local.database.Material
+import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.ActivityEditMaterialBinding
 import com.dariwan.kupin.view.main.MainActivity
@@ -28,8 +28,8 @@ class EditMaterialActivity : AppCompatActivity() {
     private val calendar = Calendar.getInstance()
     private var materialDate: String? = null
     private var material: Material? = null
-
     private var id: Int? = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditMaterialBinding.inflate(layoutInflater)
@@ -56,6 +56,7 @@ class EditMaterialActivity : AppCompatActivity() {
         val quantity = materialQuantity.toInt()
         val satuan = binding.spSatuan.selectedItem.toString()
         val category = binding.spCategory.selectedItem.toString()
+        val location_storage = binding.spLocationStorage.selectedItem.toString()
 
         val dateMaterial = materialDate
 
@@ -68,10 +69,12 @@ class EditMaterialActivity : AppCompatActivity() {
             Toast.makeText(this, "Tanggal harus dipilih", Toast.LENGTH_SHORT).show()
         } else {
             Log.e("update", "${id}, ${materialName}, ${quantity}, ${dateMaterial}")
-            editMaterialViewModel.update(id!!, materialName, quantity, dateMaterial, satuan, category)
+            editMaterialViewModel.update(id!!, materialName, quantity, dateMaterial, satuan, category, location_storage)
             Toast.makeText(this, "Data berhasil diubah", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MaterialActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
+            finish()
         }
     }
 
