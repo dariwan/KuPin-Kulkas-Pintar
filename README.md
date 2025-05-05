@@ -25,5 +25,5 @@
 
 ## Tampilan Aplikasi
 
-![Tampilan Aplikasi KuPin](tampilan kupin.png)
+![Tampilan Aplikasi KuPin](tampilan_kupin.png)
 
