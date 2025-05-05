@@ -19,6 +19,8 @@ import java.lang.StringBuilder
 class RecipeViewModel(private val recommendationRepository: RecommendationRepository): ViewModel() {
     fun sendRecommendation(user_input: String) = recommendationRepository.getRecommendation(user_input)
 
+    fun getAllRecipe() = recommendationRepository.getAllRecipe()
+
 
     @Suppress("UNCHECKED_CAST")
     class RecipeFactory(private val context: Context): ViewModelProvider.Factory{

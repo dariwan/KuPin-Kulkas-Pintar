@@ -7,16 +7,18 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.R
-import com.dariwan.kupin.core.data.local.database.Material
+import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import java.text.SimpleDateFormat
 import com.dariwan.kupin.databinding.ActivityAddMaterialBinding
+import com.dariwan.kupin.view.home.addkitchenstorage.AddKitchenStorageActivity
 import com.dariwan.kupin.view.home.material.MaterialActivity
-import com.dariwan.kupin.view.main.MainActivity
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
@@ -39,6 +41,7 @@ class AddMaterialActivity : AppCompatActivity() {
         setupButton()
         setupCalendar()
     }
+
 
     private fun obtainViewModel(activity: AppCompatActivity): AddMaterialViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
@@ -85,6 +88,7 @@ class AddMaterialActivity : AppCompatActivity() {
         val materialName = binding.etMaterialName.text.toString()
         val materialQuantity = binding.etMaterialQuantity.text.toString()
         val satuan = binding.spSatuan.selectedItem.toString()
+        val location_storage = binding.spLocationStorage.selectedItem.toString()
         val category = binding.spCategory.selectedItem.toString()
         val dateMaterial = materialDate
         val date = LocalDate.now()
@@ -105,17 +109,21 @@ class AddMaterialActivity : AppCompatActivity() {
                 material?.date_input = dateNow
                 material?.satuan = satuan
                 material?.category = category
+                material?.lokasi_penyimpanan = location_storage
                 Log.e(
                     "data_material",
                     "data: ${material?.name}, ${material?.quantity}, ${material?.date}, ${material?.date_input}, " +
-                            "${material?.satuan}, ${material?.category}"
+                            "${material?.satuan}, ${material?.category}" +
+                            "${material?.lokasi_penyimpanan}"
                 )
             }
             addMaterialViewModel.insert(material as Material)
             Log.e("data_material", "data: $material")
             Toast.makeText(this, "Data berhasil dibuat", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MaterialActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
+            finish()
         }
     }
 

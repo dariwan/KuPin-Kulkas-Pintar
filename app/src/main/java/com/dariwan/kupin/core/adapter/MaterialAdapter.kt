@@ -11,7 +11,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.dariwan.kupin.core.data.local.database.Material
+import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 import com.dariwan.kupin.core.utils.MaterialDiffCallback
 import com.dariwan.kupin.databinding.MaterialListBinding
 import com.dariwan.kupin.view.home.RefrigeneratorViewModel
@@ -39,6 +39,7 @@ class MaterialAdapter(private val refrigeneratorViewModel: RefrigeneratorViewMod
                 tvQuantity.text = material.quantity.toString()
                 tvDate.text = material.date
                 tvCategory.text = material.category
+                tvLocationStorage.text = material.lokasi_penyimpanan
 
                 val formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy")
                 val currentDate = LocalDate.now()
@@ -80,6 +81,7 @@ class MaterialAdapter(private val refrigeneratorViewModel: RefrigeneratorViewMod
             intent.putExtra(DetailMaterialActivity.SATUAN_MATERIAL, material.satuan)
             intent.putExtra(DetailMaterialActivity.CATEGORY_MATERIAL, material.category)
             intent.putExtra(DetailMaterialActivity.ID_MATERIAL, material.id)
+            intent.putExtra(DetailMaterialActivity.LOCATION_STORAGE, material.lokasi_penyimpanan)
 
             val optionsCOmpact: ActivityOptionsCompat =
                 ActivityOptionsCompat.makeSceneTransitionAnimation(

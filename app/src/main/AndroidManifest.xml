@@ -16,6 +16,18 @@
         android:theme="@style/Theme.KuPin"
         tools:targetApi="31">
         <activity
+            android:name=".view.home.editmaterial.EditStorageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.detail.DetailStorageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.addkitchenstorage.AddKitchenStorageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.kitchenstorage.KitchenStorageActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.recipe.detail.DetailRecipeActivity"
             android:exported="false" />
         <activity

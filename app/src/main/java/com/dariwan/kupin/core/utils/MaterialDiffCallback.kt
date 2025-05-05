@@ -1,7 +1,7 @@
 package com.dariwan.kupin.core.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.dariwan.kupin.core.data.local.database.Material
+import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 
 class MaterialDiffCallback(private val oldMaterialList: List<Material>, private val newMaterialList: List<Material>): DiffUtil.Callback() {
     override fun getOldListSize(): Int {

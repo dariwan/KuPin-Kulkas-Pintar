@@ -3,7 +3,6 @@ package com.dariwan.kupin.view.recipe.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
-import com.dariwan.kupin.R
 import com.dariwan.kupin.databinding.ActivityDetailRecipeBinding
 
 class DetailRecipeActivity : AppCompatActivity() {

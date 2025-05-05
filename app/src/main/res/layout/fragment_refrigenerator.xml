@@ -89,7 +89,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_report"
+        android:id="@+id/card_kitchen_cabinets"
         style="?attr/materialCardViewElevatedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -102,6 +102,73 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_refrigenerator">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/blue_3"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/ivThumbnail2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_kitchen_cabinet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvTitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:text="@string/lemari_dapur"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:fontFamily="@font/poppins_regular"
+                app:layout_constraintBottom_toTopOf="@id/tvContent2"
+                app:layout_constraintStart_toEndOf="@id/ivThumbnail2"
+                app:layout_constraintTop_toTopOf="@id/ivThumbnail2"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvContent2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLength="100"
+                android:maxLines="3"
+                android:text="@string/daftar_bahan_makanan_yang_ada_di_lemari_dapur"
+                android:textColor="@color/white"
+                app:fontFamily="@font/poppins_regular"
+                app:layout_constraintBottom_toBottomOf="@id/ivThumbnail2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvTitle2"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle2"
+                tools:ignore="TextContrastCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_report"
+        style="?attr/materialCardViewElevatedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/blue_3"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_kitchen_cabinets">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -148,6 +215,72 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvTitle1"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitle1"
+                tools:ignore="TextContrastCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_recipe"
+        style="?attr/materialCardViewElevatedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/blue_3"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_report">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/blue_3"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/ivThumbnail3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_recipe"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tvTitle3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:maxLength="30"
+                android:maxLines="1"
+                android:text="@string/resep"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:fontFamily="@font/poppins_regular"
+                app:layout_constraintBottom_toTopOf="@id/tvContent3"
+                app:layout_constraintStart_toEndOf="@id/ivThumbnail3"
+                app:layout_constraintTop_toTopOf="@id/ivThumbnail3"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvContent3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLength="100"
+                android:maxLines="3"
+                android:text="@string/rekomendasi_resep_dan_seluruh_resep"
+                android:textColor="@color/white"
+                app:fontFamily="@font/poppins_regular"
+                app:layout_constraintBottom_toBottomOf="@id/ivThumbnail3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvTitle3"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle3"
                 tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

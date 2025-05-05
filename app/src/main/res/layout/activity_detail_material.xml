@@ -136,6 +136,29 @@
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/lokasi_penyimanan"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_category"
+        app:layout_constraintTop_toBottomOf="@+id/tv_category" />
+
+    <TextView
+        android:id="@+id/tv_location_storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lokasi_penyimanan"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
     <Button
         android:id="@+id/btn_edit"
         android:layout_width="150dp"
@@ -145,8 +168,8 @@
         android:text="@string/edit"
         android:textAllCaps="false"
         app:cornerRadius="10dp"
-        app:layout_constraintStart_toStartOf="@+id/tv_category"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category" />
+        app:layout_constraintStart_toStartOf="@+id/tv_location_storage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location_storage" />
 
     <Button
         android:id="@+id/btn_delete"
@@ -159,7 +182,7 @@
         android:textAllCaps="false"
         app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_category" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_location_storage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

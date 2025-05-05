@@ -16,12 +16,11 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.dariwan.kupin.R
-import com.dariwan.kupin.core.data.local.database.Material
+import com.dariwan.kupin.core.data.local.database.kulkasku.Material
 import com.dariwan.kupin.core.utils.ViewModelFactory
 import com.dariwan.kupin.databinding.ActivityDetailMaterialBinding
 import com.dariwan.kupin.view.main.MainActivity
 import com.dariwan.kupin.view.home.editmaterial.EditMaterialActivity
-import com.dariwan.kupin.view.home.material.MaterialActivity
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -53,6 +52,7 @@ class DetailMaterialActivity : AppCompatActivity() {
         date = intent.getStringExtra(DATE_MATERIAL)
         val satuan = intent.getStringExtra(SATUAN_MATERIAL)
         val category = intent.getStringExtra(CATEGORY_MATERIAL)
+        val location_storage = intent.getStringExtra(LOCATION_STORAGE)
 
         val formatter = DateTimeFormatter.ofPattern("dd - MM - yyyy")
         val materialDate = LocalDate.parse(date, formatter)
@@ -65,6 +65,7 @@ class DetailMaterialActivity : AppCompatActivity() {
         binding.tvCategory.text = category
         Log.e("day_difference", "$dayDifference")
         binding.tvLimitComsumtion.text = "$dayDifference Hari"
+        binding.tvLocationStorage.text = location_storage
     }
 
     private fun setupButton() {
@@ -135,5 +136,6 @@ class DetailMaterialActivity : AppCompatActivity() {
         const val SATUAN_MATERIAL = "satuan_material"
         const val CATEGORY_MATERIAL = "category_material"
         const val ID_MATERIAL = "id_material"
+        const val LOCATION_STORAGE = "location_storage"
     }
 }
